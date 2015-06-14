@@ -11,7 +11,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       flash[:notice] = "Bienvenue [nom] sur le site French Gaming. Pensez à valider votre inscription en cliquant sur le lien envoyer par e-mail."
-      session[:user_id] = @user.id
+      log_in @user
       redirect_to root_path
     else
       flash[:notice] = "Error Sign up."

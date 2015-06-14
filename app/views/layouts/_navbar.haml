@@ -8,5 +8,9 @@
       %li.links= link_to 'Galerie', root_path
   .right-links
     %ul
-      %li.links= link_to 'Login', login_path
-      %li.links= link_to 'Sign up', signup_path
+      - if logged_in?
+        %li= link_to current_user.username, current_user
+        %li= link_to 'Log out', logout_path
+      - else
+        %li= link_to 'Log in', login_path
+        %li= link_to 'Sign up', new_user_path
