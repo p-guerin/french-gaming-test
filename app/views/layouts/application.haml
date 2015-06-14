@@ -10,4 +10,5 @@
   %body
     - if flash[:notice]
       .label.flash-notice= flash[:notice]
+    = render 'layouts/navbar'
     = yield
