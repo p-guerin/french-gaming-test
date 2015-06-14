@@ -1,2 +1,23 @@
 class UsersController < ApplicationController
+  def new
+    @user = User.new
+  end
+
+  def create
+    @user = User.create(user_params)
+    if @user.save
+      flash[:notice] = "Bienvenue [nom] sur le site French Gaming. Pensez à valider votre inscription en cliquant sur le lien envoyer par e-mail."
+      session[:user_id] = @user.id
+      redirect_to root_path
+    else
+      flash[:notice] = "Error Sign up."
+      render :new
+    end
+  end
+
+  private
+
+  def user_params
+    params.require(:user).permit(:username, :email, :password, :password_confirmation)
+  end
 end
