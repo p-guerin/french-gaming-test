@@ -1,0 +1,18 @@
+%h1= @user.username
+  
+%ul
+  %li= @user.email
+  %li= @user.password_digest
+  %li= @user.age
+  %li= @user.city
+  %li= @user.country
+  %li= @user.image
+  %li= @user.steam
+  %li= @user.facebook
+  %li= @user.twitter
+  %li= @user.youtube
+  %li= @user.created_at
+  %li= @user.updated_at
+
+- if current_user == @user
+  = link_to "Settings", edit_user_path(current_user)

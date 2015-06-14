@@ -3,13 +3,14 @@
     %ul
       %li.links= link_to 'Accueil', root_path
       %li.links= link_to 'Actualités', root_path
-      %li.links= link_to 'Equipe', root_path
+      %li.links= link_to "Team", users_path
       %li.links= link_to 'Forum', root_path
       %li.links= link_to 'Galerie', root_path
   .right-links
     %ul
       - if logged_in?
         %li= link_to current_user.username, current_user
+        %li= link_to "Settings", edit_user_path(current_user)
         %li= link_to 'Log out', logout_path
       - else
         %li= link_to 'Log in', login_path
